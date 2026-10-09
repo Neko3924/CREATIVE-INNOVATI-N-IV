@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Cotización C2 Producciones – IASD</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  @page { size: A4; margin: 0; }
+  :root{
+    --ink:#14213A; --muted:#5E6878; --line:#DCE1E8; --soft:#F4F6F9;
+    --gold:#B08D57; --gold-soft:#F6EFE3; --navy:#14213A;
+    --serif:"Cormorant Garamond", Georgia, serif; --sans:Inter, "Liberation Sans", Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:210mm;height:297mm}
+  body{font-family:var(--sans);color:var(--ink);font-size:8.6pt;line-height:1.42;background:#fff;-webkit-print-color-adjust:exact;font-variant-numeric:lining-nums;print-color-adjust:exact}
+  .page{width:210mm;height:297mm;position:relative;overflow:hidden;display:flex;flex-direction:column}
+
+  /* header band */
+  .band{background:var(--navy);color:#fff;padding:8mm 14mm 6.5mm;display:flex;justify-content:space-between;align-items:flex-end;position:relative}
+  .band::after{content:"";position:absolute;left:14mm;right:14mm;bottom:0;height:1.2mm;background:var(--gold)}
+  .brand{display:flex;align-items:center;gap:4mm}
+  .mark{width:13mm;height:13mm;border:1.4pt solid var(--gold);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:17pt;color:var(--gold);letter-spacing:-.5pt}
+  .brand b{display:block;font-family:var(--serif);font-size:19pt;font-weight:600;letter-spacing:.6pt;line-height:1}
+  .brand span{font-size:7pt;letter-spacing:2.4pt;text-transform:uppercase;color:#C9D1DE}
+  .docmeta{text-align:right}
+  .docmeta .t{font-size:7pt;letter-spacing:3pt;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .docmeta .n{font-family:var(--serif);font-size:20pt;font-weight:600;line-height:1.05}
+  .docmeta .d{font-size:7.4pt;color:#C9D1DE;margin-top:1mm}
+
+  main{padding:5mm 14mm 0;display:flex;flex-direction:column;gap:3.6mm;flex:1}
+
+  .intro{display:grid;grid-template-columns:1.55fr 1fr;gap:8mm;align-items:end}
+  .eyebrow{font-size:6.8pt;letter-spacing:2.2pt;text-transform:uppercase;color:var(--gold);font-weight:700}
+  h1{font-family:var(--serif);font-weight:600;font-size:18pt;line-height:1.05;margin-top:1.2mm}
+  .client{border-left:1.2pt solid var(--gold);padding-left:4mm}
+  .client p{font-size:8.2pt}
+  .client strong{display:block;font-size:9.4pt}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border:0.8pt solid var(--line);border-radius:2.5mm;overflow:hidden}
+  .stat{padding:2.2mm 4mm;border-right:0.8pt solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat b{display:block;font-family:var(--serif);font-size:15pt;font-weight:600;line-height:1}
+  .stat span{font-size:6.8pt;letter-spacing:1pt;text-transform:uppercase;color:var(--muted)}
+
+  table{width:100%;border-collapse:collapse}
+  thead th{font-size:6.6pt;letter-spacing:1.6pt;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:left;padding:0 0 1.6mm;border-bottom:1.1pt solid var(--ink)}
+  thead th.r,td.r{text-align:right}
+  tbody td{padding:1.35mm 0;border-bottom:0.6pt solid var(--line);vertical-align:top}
+  td.num{width:9mm;font-family:var(--serif);font-size:12pt;font-weight:600;color:var(--gold);line-height:1}
+  td.svc b{display:block;font-size:8.9pt;font-weight:600}
+  td.svc i{font-style:normal;color:var(--muted);font-size:7.6pt}
+  td.dur{width:22mm;color:var(--muted);white-space:nowrap}
+  td.r{width:24mm;font-weight:600;font-size:9pt;font-variant-numeric:tabular-nums;white-space:nowrap}
+  tr.grp td{padding:1.7mm 0 .3mm;border-bottom:0;font-size:6.6pt;letter-spacing:1.8pt;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .total{display:flex;justify-content:space-between;align-items:center;background:var(--navy);color:#fff;border-radius:2.5mm;padding:2.4mm 5mm;margin-top:2mm}
+  .total span{font-size:7pt;letter-spacing:2.4pt;text-transform:uppercase;color:#C9D1DE}
+  .total small{display:block;font-size:6.8pt;letter-spacing:.2pt;text-transform:none;color:#9FAABB;margin-top:.6mm}
+  .total b{font-family:var(--serif);font-size:21pt;font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
+  .total b em{font-style:normal;color:var(--gold);font-size:15pt;margin-right:1.6mm}
+
+  .cols{display:grid;grid-template-columns:1.15fr 1fr;gap:7mm}
+  h2{font-size:6.8pt;letter-spacing:2.2pt;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:2mm}
+  ul.check{list-style:none;display:grid;gap:.7mm}
+  ul.check li{padding-left:4.6mm;position:relative;font-size:7.9pt}
+  ul.check li::before{content:"";position:absolute;left:0;top:1.1mm;width:2.2mm;height:1.2mm;border-left:1pt solid var(--gold);border-bottom:1pt solid var(--gold);transform:rotate(-45deg)}
+
+  .pay{display:grid;grid-template-columns:1fr 1fr;gap:2.4mm;margin-bottom:2.2mm}
+  .pay div{background:var(--soft);border-radius:2mm;padding:1.8mm 3.4mm}
+  .pay span{display:block;font-size:6.6pt;letter-spacing:1.2pt;text-transform:uppercase;color:var(--muted)}
+  .pay b{font-family:var(--serif);font-size:15pt;font-weight:600;font-variant-numeric:tabular-nums}
+  .pay small{display:block;font-size:7pt;color:var(--muted)}
+  dl{display:grid;grid-template-columns:auto 1fr;gap:.8mm 3mm;font-size:7.8pt}
+  dt{font-weight:600}
+  dd{color:var(--ink)}
+
+  .note{background:var(--gold-soft);border-radius:2mm;padding:2.2mm 4mm;font-size:7.6pt;display:grid;grid-template-columns:auto 1fr;gap:3mm;align-items:start}
+  .note b{font-size:6.6pt;letter-spacing:1.6pt;text-transform:uppercase;color:var(--gold);padding-top:.4mm;white-space:nowrap}
+  .excl{font-size:7.3pt;color:var(--muted)}
+  .excl b{color:var(--ink);font-weight:600}
+
+  footer{margin:auto 14mm 0;padding:3mm 0 7mm;border-top:0.6pt solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;gap:10mm}
+  footer p{font-family:var(--serif);font-size:11.5pt;font-style:italic;color:var(--ink);max-width:105mm;line-height:1.25}
+  .sign{text-align:center;min-width:52mm}
+  .sign .line{border-top:0.8pt solid var(--ink);margin-bottom:1.2mm}
+  .sign b{display:block;font-size:8pt}
+  .sign span{font-size:6.8pt;color:var(--muted);letter-spacing:1pt;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="band">
+    <div class="brand">
+      <div class="mark">C2</div>
+      <div><b>C2 Producciones</b><span>Grabación · Fotografía · Edición</span></div>
+    </div>
+    <div class="docmeta">
+      <div class="t">Cotización</div>
+      <div class="n">Producción audiovisual</div>
+      <div class="d">Emitida: 9 de octubre de 2026 · Válida hasta: 24 de octubre de 2026</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div>
+        <div class="eyebrow">Proyecto</div>
+        <h1>Videos instructivos y material audiovisual misionero</h1>
+      </div>
+      <div class="client">
+        <div class="eyebrow">Cliente</div>
+        <p><strong>Iglesia Adventista del Séptimo Día</strong>IASD</p>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><b>5</b><span>Videos</span></div>
+      <div class="stat"><b>≈ 25 min</b><span>Duración total</span></div>
+      <div class="stat"><b>2</b><span>Jornadas</span></div>
+      <div class="stat"><b>10–15</b><span>Días hábiles</span></div>
+    </section>
+
+    <section>
+      <table>
+        <thead><tr><th></th><th>Servicio</th><th>Duración</th><th class="r">Importe</th></tr></thead>
+        <tbody>
+          <tr class="grp"><td colspan="4">Producción dramatizada</td></tr>
+          <tr><td class="num">01</td><td class="svc"><b>Video instructivo dramatizado con actores y voz en off</b><i>Guion técnico, dirección de actores voluntarios, grabación, voz en off, edición, color y audio.</i></td><td class="dur">15 min</td><td class="r">S/ 1,800.00</td></tr>
+
+          <tr class="grp"><td colspan="4">Instructivos de llenado</td></tr>
+          <tr><td class="num">02</td><td class="svc"><b>Instructivo de llenado del sistema</b><i>Grabación de pantalla, señalización paso a paso y textos guía.</i></td><td class="dur">3 min</td><td class="r">S/ 350.00</td></tr>
+          <tr><td class="num">03</td><td class="svc"><b>Instructivo de llenado del registro de ES</b><i>Grabación de pantalla, señalización paso a paso y textos guía.</i></td><td class="dur">3 min</td><td class="r">S/ 350.00</td></tr>
+          <tr><td class="num">04</td><td class="svc"><b>Instructivo de llenado de la tabla comparativa</b><i>Grabación de pantalla, señalización paso a paso y textos guía.</i></td><td class="dur">3 min</td><td class="r">S/ 350.00</td></tr>
+
+          <tr class="grp"><td colspan="4">Difusión</td></tr>
+          <tr><td class="num">05</td><td class="svc"><b>Video publicitario</b><i>Edición dinámica con el material grabado por el equipo durante las jornadas, música y textos.</i></td><td class="dur">1 min</td><td class="r">S/ 350.00</td></tr>
+
+          <tr class="grp"><td colspan="4">Gestión</td></tr>
+          <tr><td class="num">06</td><td class="svc"><b>Planificación y coordinación general de la producción</b><i>Cronograma, coordinación de locaciones, actores voluntarios y jornadas de grabación.</i></td><td class="dur">—</td><td class="r">S/ 300.00</td></tr>
+        </tbody>
+      </table>
+      <div class="total">
+        <span>Total del servicio<small>Gastos operativos no incluidos (ver nota)</small></span>
+        <b><em>S/</em>3,500.00</b>
+      </div>
+    </section>
+
+    <section class="cols">
+      <div>
+        <h2>El servicio incluye</h2>
+        <ul class="check">
+          <li>Guiones técnicos elaborados a partir de las ideas y contenidos de la IASD.</li>
+          <li>Coordinación de actores voluntarios y locaciones prestadas.</li>
+          <li>Grabación audiovisual en dos jornadas coordinadas.</li>
+          <li>Edición de los cinco videos (≈ 25 minutos en total).</li>
+          <li>Voz en off sencilla para el video dramatizado.</li>
+          <li>Textos, ajustes básicos de audio y corrección de color.</li>
+          <li>Entrega digital en MP4 Full HD.</li>
+          <li>Una ronda de ajustes menores por cada video.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Condiciones</h2>
+        <div class="pay">
+          <div><span>Adelanto · 50 %</span><b>S/ 1,750</b><small>Al confirmar el servicio</small></div>
+          <div><span>Saldo · 50 %</span><b>S/ 1,750</b><small>Contra entrega</small></div>
+        </div>
+        <dl>
+          <dt>Plazo</dt><dd>10 a 15 días hábiles tras la última jornada de grabación, sujeto a la aprobación oportuna de los contenidos.</dd>
+          <dt>Cliente</dt><dd>Proporciona la información de los procedimientos, accesos al sistema, locaciones y disponibilidad de los participantes.</dd>
+          <dt>Vigencia</dt><dd>15 días calendario.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <div class="note"><b>Gastos operativos</b><span>Movilidad y alimentación de los participantes voluntarios y del equipo de producción. Se coordinarán previamente con la IASD y se rendirán según los costos reales.</span></div>
+
+    <p class="excl"><b>No incluye:</b> alquiler de locaciones, honorarios de actores, locutor profesional, jornadas adicionales, escenas nuevas fuera de lo acordado ni archivos editables del proyecto.</p>
+  </main>
+
+  <footer>
+    <p>Agradecemos su confianza y quedamos atentos a la coordinación e inicio del proyecto.</p>
+    <div class="sign"><div class="line"></div><b>C2 Producciones</b><span>Producción audiovisual</span></div>
+  </footer>
+</div>
+</body>
+</html>
